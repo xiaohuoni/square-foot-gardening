@@ -1,14 +1,13 @@
-import '../css/theme.css';
-import '../css/plants.css';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
-import Modal from 'react-bootstrap/Modal';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Modal from 'react-bootstrap/Modal';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import '../css/plants.css';
+import '../css/theme.css';
 import Plot from '../models/Plot';
-
 
 const propTypes = {
   show: PropTypes.bool.isRequired,
@@ -16,13 +15,10 @@ const propTypes = {
   handleHide: PropTypes.func.isRequired,
   plantGroups: PropTypes.object.isRequired,
   plot: PropTypes.instanceOf(Plot).isRequired,
-  neighbors: PropTypes.arrayOf(
-    PropTypes.instanceOf(Plot)
-  ).isRequired
-}
+  neighbors: PropTypes.arrayOf(PropTypes.instanceOf(Plot)).isRequired,
+};
 
 class PlantPicker extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -46,10 +42,14 @@ class PlantPicker extends React.Component {
   }
 
   renderNeighbors() {
-    const neighborPlants = this.props.neighbors.map(plot => plot.plant).filter(Boolean);
+    const neighborPlants = this.props.neighbors
+      .map((plot) => plot.plant)
+      .filter(Boolean);
     if (neighborPlants.length > 0) {
       const getName = (plant) => plant.namePlural.toLowerCase();
-      const names = Array.from(new Set(neighborPlants.map(getName))).sort().join(', ');
+      const names = Array.from(new Set(neighborPlants.map(getName)))
+        .sort()
+        .join(', ');
       return <span className="text-wrap text-sm">邻居: {names}</span>;
     }
   }
@@ -65,10 +65,10 @@ class PlantPicker extends React.Component {
         all: '全部',
         good: '伴生',
         neutral: '中性',
-        bad: '争斗'
+        bad: '争斗',
       };
       const buttonStyle = {
-        width: `${Math.floor(96 / numGroups)}%`
+        width: `${Math.floor(96 / numGroups)}%`,
       };
       return (
         <div className="mb-2">
@@ -76,68 +76,69 @@ class PlantPicker extends React.Component {
             type="radio"
             name="currentPlantGroupFilter"
             value={this.state.currentPlantGroup}
-            onChange={(value) => { this.setState({ currentPlantGroup: value }) }}
+            onChange={(value) => {
+              this.setState({ currentPlantGroup: value });
+            }}
             className="bg-light w-100"
           >
-            {Object.entries(this.props.plantGroups).map(([group, plantList]) => {
-              return (
-                <ToggleButton
-                  size="sm"
-                  className="text-center"
-                  variant="outline-success"
-                  value={group}
-                  key={group}
-                  style={buttonStyle}
-                >
-                  {groupNameMap[group]}
-                </ToggleButton>
-              )
-            })
-            }
+            {Object.entries(this.props.plantGroups).map(
+              ([group, plantList]) => {
+                return (
+                  <ToggleButton
+                    size="sm"
+                    className="text-center"
+                    variant="outline-success"
+                    value={group}
+                    key={group}
+                    style={buttonStyle}
+                  >
+                    {groupNameMap[group]}
+                  </ToggleButton>
+                );
+              },
+            )}
           </ToggleButtonGroup>
         </div>
-      )
+      );
     }
   }
 
   renderPlantList() {
     const sortFunc = (a, b) => a.namePlural.localeCompare(b.namePlural);
-    const plants = (this.state.currentPlantGroup) ? this.props.plantGroups[this.state.currentPlantGroup] : [];
+    const plants = this.state.currentPlantGroup
+      ? this.props.plantGroups[this.state.currentPlantGroup]
+      : [];
     return (
       <ListGroup>
-        {plants
-          .sort(sortFunc)
-          .map(plant => {
-            return (
-              <ListGroup.Item
-                action
-                key={plant.id}
-                onClick={() => this.props.handleSelect(plant, plant.defaultLayout())}
-              >
-                <span>
-                  {plant.namePlural}
-                  <div className={`${plant.className} icon float-right`}></div>
-                </span>
-              </ListGroup.Item>
-            )
-          })}
+        {plants.sort(sortFunc).map((plant) => {
+          return (
+            <ListGroup.Item
+              action
+              key={plant.id}
+              onClick={() =>
+                this.props.handleSelect(plant, plant.defaultLayout())
+              }
+            >
+              <span>
+                {plant.namePlural}
+                <div className={`${plant.className} icon float-right`}></div>
+              </span>
+            </ListGroup.Item>
+          );
+        })}
       </ListGroup>
-    )
+    );
   }
 
   render() {
     return (
-      <Modal
-        show={this.props.show}
-        onHide={this.props.handleHide}
-        scrollable
-      >
+      <Modal show={this.props.show} onHide={this.props.handleHide} scrollable>
         <Modal.Header closeButton className="bg-pastel-green">
           植物选择
         </Modal.Header>
         <Modal.Body>
           {this.renderClearPlotButton()}
-          {(this.props.plot.plant) ? <hr /> : null}
+          {this.props.plot.plant ? <hr /> : null}
           {this.renderNeighbors()}
           {this.renderFilters()}
           {this.renderPlantList()}

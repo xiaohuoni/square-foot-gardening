@@ -1,6 +1,5 @@
 const layoutObjects = [];
 
-
 export default class Layout {
   constructor(resource) {
     this.id = resource.id;
@@ -20,7 +19,7 @@ export default class Layout {
   }
 
   static getObject(id) {
-    return layoutObjects.find(layout => layout.id === id);
+    return layoutObjects.find((layout) => layout.id === id);
   }
 
   static allObjects() {
@@ -30,208 +29,80 @@ export default class Layout {
   static loadObjectsFromApi() {
     const data = [
       {
-        "id": 1,
-        "fill": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            3
-          ],
-          [
-            1,
-            0
-          ],
-          [
-            1,
-            1
-          ],
-          [
-            1,
-            2
-          ],
-          [
-            1,
-            3
-          ],
-          [
-            2,
-            0
-          ],
-          [
-            2,
-            1
-          ],
-          [
-            2,
-            2
-          ],
-          [
-            2,
-            3
-          ],
-          [
-            3,
-            0
-          ],
-          [
-            3,
-            1
-          ],
-          [
-            3,
-            2
-          ],
-          [
-            3,
-            3
-          ]
+        id: 1,
+        fill: [
+          [0, 0],
+          [0, 1],
+          [0, 2],
+          [0, 3],
+          [1, 0],
+          [1, 1],
+          [1, 2],
+          [1, 3],
+          [2, 0],
+          [2, 1],
+          [2, 2],
+          [2, 3],
+          [3, 0],
+          [3, 1],
+          [3, 2],
+          [3, 3],
         ],
-        "rows": 4,
-        "cols": 4
+        rows: 4,
+        cols: 4,
       },
       {
-        "id": 2,
-        "fill": [
-          [
-            1,
-            0
-          ],
-          [
-            1,
-            1
-          ],
-          [
-            1,
-            2
-          ],
-          [
-            1,
-            3
-          ],
-          [
-            2,
-            0
-          ],
-          [
-            2,
-            1
-          ],
-          [
-            2,
-            2
-          ],
-          [
-            2,
-            3
-          ]
+        id: 2,
+        fill: [
+          [1, 0],
+          [1, 1],
+          [1, 2],
+          [1, 3],
+          [2, 0],
+          [2, 1],
+          [2, 2],
+          [2, 3],
         ],
-        "rows": 4,
-        "cols": 4
+        rows: 4,
+        cols: 4,
       },
       {
-        "id": 3,
-        "fill": [
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            1,
-            1
-          ],
-          [
-            1,
-            2
-          ],
-          [
-            2,
-            1
-          ],
-          [
-            2,
-            2
-          ],
-          [
-            3,
-            1
-          ],
-          [
-            3,
-            2
-          ]
+        id: 3,
+        fill: [
+          [0, 1],
+          [0, 2],
+          [1, 1],
+          [1, 2],
+          [2, 1],
+          [2, 2],
+          [3, 1],
+          [3, 2],
         ],
-        "rows": 4,
-        "cols": 4
+        rows: 4,
+        cols: 4,
       },
       {
-        "id": 4,
-        "fill": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            1,
-            0
-          ],
-          [
-            1,
-            1
-          ],
-          [
-            1,
-            2
-          ],
-          [
-            2,
-            0
-          ],
-          [
-            2,
-            1
-          ],
-          [
-            2,
-            2
-          ]
+        id: 4,
+        fill: [
+          [0, 0],
+          [0, 1],
+          [0, 2],
+          [1, 0],
+          [1, 1],
+          [1, 2],
+          [2, 0],
+          [2, 1],
+          [2, 2],
         ],
-        "rows": 3,
-        "cols": 3
+        rows: 3,
+        cols: 3,
       },
       {
-        "id": 5,
-        "fill": [
-          [
-            0,
-            0
-          ]
-        ],
-        "rows": 1,
-        "cols": 1
-      }
+        id: 5,
+        fill: [[0, 0]],
+        rows: 1,
+        cols: 1,
+      },
     ];
     // fetch('/backend/layouts/')
     //   .then(response => {
@@ -239,7 +110,7 @@ export default class Layout {
     //   })
     //   .then(data => {
     //     if (data) {
-    data.forEach(resource => layoutObjects.push(new Layout(resource)));
+    data.forEach((resource) => layoutObjects.push(new Layout(resource)));
     //   }
     // });
   }

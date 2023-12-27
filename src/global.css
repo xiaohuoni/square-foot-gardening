@@ -38,3 +38,65 @@ body {
 .float-right {
   float: right;
 }
+
+:root:root {
+  --adm-color-primary: #ff4500;
+  /* 亮红色，象征迪士尼的活力和冒险精神 */
+  --adm-color-success: #48d1cc;
+  /* 浅绿色，给人宁静和成功的感觉 */
+  --adm-color-warning: #ffa500;
+  /* 亮橙色，足够引人注意但不至于过于刺眼 */
+  --adm-color-danger: #cc3333;
+  /* 深红色，警告和危险颜色需要足够醒目 */
+  --adm-color-yellow: #ffff00;
+  /* 鲜亮的黄色，象征快乐和积极 */
+  --adm-color-orange: #ff4500;
+  /* 醒目的橙色，增加丰富性和活泼 */
+  --adm-color-wathet: #1e90ff;
+  /* 浅蓝色，给人清爽和宁静的感觉 */
+  --adm-color-text: #000000;
+  /* 黑色，能提供足够的对比，使文本易读 */
+  --adm-color-text-secondary: #404040;
+  /* 较深的灰色，作为次要文本颜色，可以提供适量的对比度 */
+  --adm-color-weak: #787878;
+  /* 灰色，适合用于未激活或不重要的元素 */
+  --adm-color-light: #a9a9a9;
+  /* 浅灰色，适合用作背景色，提高对比度 */
+  --adm-color-border: #d3d3d3;
+  /* 淡灰色，适用于边框 */
+  --adm-color-background: #f8f8ff;
+  /* 清新的白色，作为背景色，因为它不会与其他颜色产生冲突 */
+}
+
+.text-white {
+  color: rgb(255 255 255);
+}
+
+.px-4 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.bg-blue-500 {
+  background-color: var(--adm-color-primary);
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+.bg-zinc-100 {
+  background-color: rgb(244 244 245);
+}
+
+.markdown {
+  font-size: 22px;
+}
+
+body {
+  --adm-font-size-main: 20px !important;
+}

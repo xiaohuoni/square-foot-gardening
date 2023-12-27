@@ -1,19 +1,18 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
 import '../css/theme.css';
 import githubIcon from '../images/mark-github.svg';
-
 
 const propTypes = {
   defaultPath: PropTypes.string.isRequired,
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    })
-  ).isRequired
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 const GithubLink = () => {
@@ -30,11 +29,11 @@ const GithubLink = () => {
         alt="Github"
         width="24"
         height="24"
-        className="d-none d-sm-none d-md-block" 
+        className="d-none d-sm-none d-md-block"
       />
     </a>
   );
-}
+};
 
 class Header extends React.Component {
   render() {
@@ -46,15 +45,13 @@ class Header extends React.Component {
         <Navbar.Toggle aria-controls="navbar-actions" />
         <Navbar.Collapse id="navbar-actions">
           <Nav className="mr-auto" activeKey={this.props.location.pathname}>
-            {
-              this.props.navItems.map(item => {
-                return (
-                  <Nav.Item key={item.name}>
-                    <Nav.Link href={item.path}>{item.name}</Nav.Link>
-                  </Nav.Item>
-                );
-              })
-            }
+            {this.props.navItems.map((item) => {
+              return (
+                <Nav.Item key={item.name}>
+                  <Nav.Link href={item.path}>{item.name}</Nav.Link>
+                </Nav.Item>
+              );
+            })}
           </Nav>
           <GithubLink />
         </Navbar.Collapse>

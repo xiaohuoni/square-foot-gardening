@@ -11,21 +11,21 @@ import strawberry from './strawberry.svg';
 import tomato from './tomato.svg';
 
 const sources = {
-    beet: beet,
-    carrot: carrot,
-    garlic: garlic,
-    leek: leek,
-    lettuce: lettuce,
-    onion: onion,
-    pea: peas,
-    radish: radish,
-    spinach: spinach,
-    strawberry: strawberry,
-    tomato: tomato
+  beet: beet,
+  carrot: carrot,
+  garlic: garlic,
+  leek: leek,
+  lettuce: lettuce,
+  onion: onion,
+  pea: peas,
+  radish: radish,
+  spinach: spinach,
+  strawberry: strawberry,
+  tomato: tomato,
 };
 
 function plantImgSrc(plantName) {
-    return sources[plantName];
+  return sources[plantName];
 }
 
 export default plantImgSrc;

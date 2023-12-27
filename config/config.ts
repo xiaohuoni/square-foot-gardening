@@ -6,11 +6,20 @@ export default defineConfig({
     console: {},
     inspx: {},
   },
-  title: '一米花园',
+  plugins: ['umi-plugin-route-mdx'],
+  keepalive: [/./],
+  mobileLayout: true,
+  title: '摆草园',
   hd: false,
   mfsu: false,
   hash: false,
   npmClient: 'pnpm',
-  displayName: 'sfg', // The application's name
+  displayName: '摆草园', // The application's name
   packageId: 'com.alitajs.sfg', // The application's App ID;
+  azure: {
+    apiVersion: '2023-07-01-preview',
+    model: 'alita4',
+    resource: 'alita',
+  },
+  jsMinifier: 'terser',
 });
