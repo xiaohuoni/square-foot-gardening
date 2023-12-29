@@ -54,18 +54,6 @@ body {
   /* 醒目的橙色，增加丰富性和活泼 */
   --adm-color-wathet: #1e90ff;
   /* 浅蓝色，给人清爽和宁静的感觉 */
-  --adm-color-text: #000000;
-  /* 黑色，能提供足够的对比，使文本易读 */
-  --adm-color-text-secondary: #404040;
-  /* 较深的灰色，作为次要文本颜色，可以提供适量的对比度 */
-  --adm-color-weak: #787878;
-  /* 灰色，适合用于未激活或不重要的元素 */
-  --adm-color-light: #a9a9a9;
-  /* 浅灰色，适合用作背景色，提高对比度 */
-  --adm-color-border: #d3d3d3;
-  /* 淡灰色，适用于边框 */
-  --adm-color-background: #f8f8ff;
-  /* 清新的白色，作为背景色，因为它不会与其他颜色产生冲突 */
 }
 
 .text-white {
@@ -99,4 +87,13 @@ body {
 
 body {
   --adm-font-size-main: 20px !important;
+}
+
+.alita-footer {
+  padding-bottom: var(--alita-safe-area-bottom);
+}
+
+.alita-head .adm-nav-bar{
+  padding-top: 40px !important;
+  height:85px  !important;
 }

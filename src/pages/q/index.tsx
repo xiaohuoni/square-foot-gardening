@@ -1,8 +1,10 @@
 import { MessagesList } from '@/components/MessagesList';
+import { getItem, setItem } from '@/utils/l';
 import { Content, Page } from '@alita/flow';
 import { sendOpenAI } from 'alita';
 import { Button, ErrorBlock, Form, TextArea } from 'antd-mobile';
 import { useEffect, useState, type FC } from 'react';
+
 interface QPageProps {}
 const LOCAL_KEY = 'sfg-local-key';
 const system = '你是虎博士，一位从事农业生产工作50年的植物学博士';
@@ -11,11 +13,14 @@ const QPage: FC<QPageProps> = () => {
   const [loading, setLoading] = useState(false);
   const [hiddenBusy, setHiddenBusy] = useState(true);
   const [form] = Form.useForm();
-  useEffect(() => {
-    const local = localStorage.getItem(LOCAL_KEY);
+  const init = async () => {
+    const local = await getItem(LOCAL_KEY);
     if (local) {
-      setList(JSON.parse(local));
+      setList(local);
     }
+  };
+  useEffect(() => {
+    init();
   }, []);
   return (
     <Page>
@@ -37,7 +42,7 @@ const QPage: FC<QPageProps> = () => {
             form.resetFields();
             setList((list) => {
               const n = [result.choices[0]!.message, ...mesage, ...list];
-              localStorage.setItem(LOCAL_KEY, JSON.stringify(n));
+              setItem(LOCAL_KEY, JSON.stringify(n));
               return n;
             });
           } else {
@@ -77,6 +82,19 @@ const QPage: FC<QPageProps> = () => {
       </div>
       <Content>
         <MessagesList messages={list} />
+        {list && list.length > 0 && (
+          <Button
+            block
+            onClick={() => {
+              setItem(LOCAL_KEY, JSON.stringify([]));
+              setList([]);
+            }}
+            color="primary"
+            size="large"
+          >
+            清空记录
+          </Button>
+        )}
       </Content>
     </Page>
   );

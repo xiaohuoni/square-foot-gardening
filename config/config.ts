@@ -22,4 +22,8 @@ export default defineConfig({
     resource: 'alita',
   },
   jsMinifier: 'terser',
+  metas: [{ name: 'referrer', content: 'no-referrer' }],
+  define: {
+    APPCODE: process.env['APPCODE'],
+  },
 });

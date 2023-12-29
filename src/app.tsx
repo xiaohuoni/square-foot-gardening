@@ -6,11 +6,15 @@ import type {
   TabBarProps,
   TitleListItem,
 } from 'alita';
-import { AppOutline, MessageFill, MessageOutline } from 'antd-mobile-icons';
+import {
+  AppOutline,
+  EyeFill,
+  EyeOutline,
+  MessageFill,
+  MessageOutline,
+} from 'antd-mobile-icons';
 
 export const request = {
-  prefix: '/api',
-  method: 'get',
   errorHandler: (error: ResponseError) => {
     // 集中处理错误
     console.log(11111111);
@@ -63,7 +67,18 @@ const tabList: TabBarListItem[] = [
     icon: (active: boolean) => (active ? <MessageFill /> : <MessageOutline />),
     // iconPath: SetGary,
     // selectedIconPath: SetBlue,
-    title: '提问',
+    title: '消息',
+    iconSize: '',
+    badge: '',
+  },
+  {
+    pagePath: '/vision',
+    text: '视觉',
+    // @ts-ignore
+    icon: (active: boolean) => (active ? <EyeFill /> : <EyeOutline />),
+    // iconPath: SetGary,
+    // selectedIconPath: SetBlue,
+    title: '视觉',
     iconSize: '',
     badge: '',
   },
